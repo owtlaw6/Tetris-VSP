@@ -1,7 +1,11 @@
 .board{
   height: 90vh;
-  width: 350px;
+  width: 500px;
   background-color: lightskyblue;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  grid-gap: 5px;
   
 }
 
@@ -11,4 +15,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.item {
+  grid-column-start: 3; 
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: azure;
 }
