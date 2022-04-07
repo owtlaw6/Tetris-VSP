@@ -1,0 +1,14 @@
+.board{
+  height: 90vh;
+  width: 350px;
+  background-color: lightskyblue;
+  
+}
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
