@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import Tetromino from './Tetromino';
 
 function App() {
   return (
     <div className="container"> 
-      <div className="board"> 
+      <div className="board">
+        <Tetromino /> 
         <div className="item"> 
         </div>
       </div> 
