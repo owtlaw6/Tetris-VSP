@@ -10,7 +10,7 @@ function Tetromino(){
             }
         }
     }
-    console.log(squares);
+    //console.log(squares);
     return( <>{squares.map (({row, col}) => 
         (<div style={{gridRowStart: row, gridRowEnd: row+1, gridColumnStart: col, gridColumnEnd: col+1, backgroundColor: "red", }}> 
         </div>))}</>
