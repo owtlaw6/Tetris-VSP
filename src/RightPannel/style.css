@@ -1,0 +1,10 @@
+.right-pannel{
+    width: 400px;
+    height: 90vh;
+    padding-left: 20px;
+    background-color: palegreen;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
