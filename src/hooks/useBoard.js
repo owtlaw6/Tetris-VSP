@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { randomTetromino } from "../tetrominos";
 import { getEmptyBoard } from '../utils/utils';
 
+
 const DIRECTION = {
     up: 'up',
     down: 'down'
@@ -14,6 +15,7 @@ export const useBoard = () => {
         currentPos: {row: 0, column: 5}, 
         tetromino: randomTetromino()
     });
+
     //const player = useRef(new ActiveTetro);
 
     useEffect(() => {
@@ -34,10 +36,12 @@ export const useBoard = () => {
     });
 
     const updateBoard = () => {
+
         player.current.tetromino.shape.forEach((row, rowIdx) => {
             row.forEach((val, colIdx) => {
                 const row = player.current.currentPos.row + rowIdx
                 const column = player.current.currentPos.column + colIdx
+
                 if(val === true) {
                   board[row][column] = null  
                 }
@@ -65,8 +69,6 @@ export const useBoard = () => {
             console.log('coliziune');
             updatePosition(DIRECTION.up);
         }
-        
-
         player.current.tetromino.shape.forEach((row, rowIdx) => {
             row.forEach((val, colIdx) => {
                 const row = player.current.currentPos.row + rowIdx
