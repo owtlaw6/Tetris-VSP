@@ -1,8 +1,37 @@
+export const TETROMINOS = {
+    L: {
+        shape: [ [true, false], [true, false], [true, true] ],
+        color: 'red'
+    },
+    O: {
+        shape: [ [true, true], [true, true] ],
+        color: 'black'
+    },
+    J: {
+        shape: [ [false, true], [false, true], [true, true] ],
+        color: 'green'
+    },
+    I:{
+        shape: [ [true], [true], [true], [true] ],
+        color: 'blue'
+    },
+    S:{
+        shape: [ [false, true, true], [true, true, false] ],
+        color: 'yellow'
+    },
+    Z:{
+        shape: [ [true, true, false], [false, true, true] ],
+        color: 'orange'
+    },
+    T:{
+        shape: [ [false, true, false], [true, true, true] ],
+        color: 'brown'
+    }
 
-const i = [ [true], [true], [true], [true] ];
-export const l = [ [true, false], [true, false], [true, false], [true, true] ];
-const o = [ [true, true], [true, true] ];
-const j = [ [false, true], [false, true], [false, true], [true, true] ];
-const s = [ [false, true, true], [true, true, false] ];
-const z = [ [true, true, false], [false, true, true] ];
-const t = [ [false, true, false], [true, true, true] ];
+}
+
+export const randomTetromino = () => {
+    const tetrominos = 'IJLOSTZ';
+    const randomTetromino = tetrominos[Math.floor(Math.random() * tetrominos.length)];
+    return TETROMINOS[randomTetromino];
+}
