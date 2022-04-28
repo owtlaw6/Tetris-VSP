@@ -6,15 +6,31 @@ import { useGameTime } from './hooks/useGameTime'
 import { RightPannel } from './RightPannel/RightPannel.js' 
 import { TileBoard } from './TileBoard/TileBoard.js' 
 import { getEmptyBoard } from './utils/utils';
+import { randomTetromino } from './tetrominos.js'
+import { useBoard } from './hooks/useBoard';
 
 function App() {
-  const onTick = () => {
-    console.log('tic tic')
-  };
-  
   const [speed, setSpeed] = useState(1000);
+  const [updateBoard, board] = useBoard();
+
+  const onTick = useCallback(() => {
+    console.log('tic tic');
+    updateBoard();
+  }, []);
+  
   const { isRunning, startTime, stopTime } = useGameTime({ onTick, speed });
-  const [board] = useState(getEmptyBoard);
+
+  /*shape.forEach((row, rowIdx) => {
+    row.forEach((val, colIdx) => {
+      const row = startingPosition.row + rowIdx;
+      const column = startingPosition.column + colIdx;
+
+      if(val === true){
+        board[row][column] = color;
+      }
+
+    });
+  });*/  
 
   return (
     <div className="container"> 
