@@ -12,7 +12,8 @@ export function useGameTime({ onTick: handleTick, speed }){
             handleTick();
         }, speed);
         setIsRunning(true);
-    }, [handleTick]);
+
+    }, [handleTick, speed]);
 
     const stopTime = useCallback(
         () => { 

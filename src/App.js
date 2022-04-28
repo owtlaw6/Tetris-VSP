@@ -19,19 +19,6 @@ function App() {
   }, []);
   
   const { isRunning, startTime, stopTime } = useGameTime({ onTick, speed });
-
-  /*shape.forEach((row, rowIdx) => {
-    row.forEach((val, colIdx) => {
-      const row = startingPosition.row + rowIdx;
-      const column = startingPosition.column + colIdx;
-
-      if(val === true){
-        board[row][column] = color;
-      }
-
-    });
-  });*/  
-
   return (
     <div className="container"> 
       
