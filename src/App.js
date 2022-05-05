@@ -10,13 +10,6 @@ import { randomTetromino } from './tetrominos.js'
 import { useBoard } from './hooks/useBoard';
 
 function App() {
-  return (
-    <div className="container"> 
-      <div className="board">
-        <Tetromino /> 
-        <div className="item"> 
-        </div>
-      </div> 
   const [speed, setSpeed] = useState(1000);
   const [updateBoard, board, moveLeft, moveRight, moveDown, rotate] = useBoard();
 
