@@ -1,17 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import Tetromino from './Tetromino';
+import { useCallback, useRef, useState } from "react";
+import { useGameTime } from './hooks/useGameTime' 
+import { RightPannel } from './RightPannel/RightPannel.js' 
+import { TileBoard } from './TileBoard/TileBoard.js' 
+import { getEmptyBoard } from './utils/utils';
+import { randomTetromino } from './tetrominos.js'
+import { useBoard } from './hooks/useBoard';
 
 function App() {
-<<<<<<< Updated upstream
-  return (
-    <div className="container"> 
-      <div className="board">
-        <Tetromino /> 
-        <div className="item"> 
-        </div>
-      </div> 
-=======
   const [speed, setSpeed] = useState(1000);
   const [updateBoard, board, moveLeft, moveRight, moveDown, rotate] = useBoard();
 
@@ -37,7 +35,6 @@ function App() {
         <button onClick={rotate}>ROTATE</button>
         <span>time is {isRunning ? "curge" : "not curge"}</span>
       </RightPannel>
->>>>>>> Stashed changes
       
     </div>
   );
