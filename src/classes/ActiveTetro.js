@@ -21,12 +21,18 @@ export class ActiveTetro{
     }
     updatePosition(direction = DIRECTION.down){
         let verticalAdjustment = 0;
+        let horizontalAdjustment = 0;
         if(direction === DIRECTION.down){
             verticalAdjustment = 1;
         }else if (direction === DIRECTION.up){
             verticalAdjustment = -1;
+        }else if (direction === DIRECTION.left){
+            horizontalAdjustment = -1;
+        }else if (direction === DIRECTION.right){
+            horizontalAdjustment = +1;
         }
-        this.currentPos.row += verticalAdjustment; 
+        this.currentPos.row += verticalAdjustment;
+        this.currentPos.column += horizontalAdjustment; 
     }
     eraseFrom(board){
         this.forEachTile((row, column) => (board[row][column] = null));
