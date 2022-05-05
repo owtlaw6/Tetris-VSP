@@ -3,6 +3,7 @@ import { ActiveTetro } from '../classes/ActiveTetro';
 import { randomTetromino } from "../tetrominos";
 import { DIRECTION, getEmptyBoard, getOppositeDirection } from '../utils/utils';
 
+
 export const useBoard = () => {
     const [board, setBoard] = useState(getEmptyBoard());
     const player = useRef(new ActiveTetro());
@@ -66,6 +67,7 @@ export const useBoard = () => {
         player.current.drawOn(board);
 
         if(isCollided && (direction === DIRECTION.down)){
+
             player.current = new ActiveTetro();
         }
 
