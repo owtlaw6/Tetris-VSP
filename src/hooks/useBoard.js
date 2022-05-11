@@ -42,19 +42,50 @@ export const useBoard = () => {
     const moveDown = () => {
         updateBoard(DIRECTION.down);
     }
-    const rotate = () => {
+
+    /*const rotate = () => {
         player.current.eraseFrom(board);
         let output = player.current.tetromino.shape[0].map((_, colIndex) => player.current.tetromino.shape.map(row => row[colIndex]));
-
         player.current.tetromino.shape = output;
         if(player.current.checkCollision(board)){
-           output = player.current.tetromino.shape[0].map((_, colIndex) => player.current.tetromino.shape.map(row => row[colIndex]));
-           output = output[0].map((_, colIndex) => output.map(row => row[colIndex]));
-           output = output[0].map((_, colIndex) => output.map(row => row[colIndex]));
-           player.current.tetromino.shape = output;
+            output = player.current.tetromino.shape[0].map((_, colIndex) => player.current.tetromino.shape.map(row => row[colIndex]));
+            output = output[0].map((_, colIndex) => output.map(row => row[colIndex]));
+            output = output[0].map((_, colIndex) => output.map(row => row[colIndex]));
+            player.current.tetromino.shape = output;
         }
         player.current.drawOn(board);
+    }*/
+
+    const rotateRight = () => {
+        player.current.eraseFrom(board);
+        var result = [];
+        player.current.tetromino.shape.forEach(function (a, i, aa) {
+            a.forEach(function (b, j, bb) {
+                result[bb.length - j - 1] = result[bb.length - j - 1] || [];
+                result[bb.length - j - 1][i] = b;
+            });
+        });
+        player.current.tetromino.shape = result;
+        player.current.drawOn(board);
     }
+    
+    const rotateLeft = () => {
+        player.current.eraseFrom(board);
+        var result = [];
+        player.current.tetromino.shape.forEach(function (a, i, aa) {
+            a.forEach(function (b, j, bb) {
+                result[j] = result[j] || [];
+                result[j][aa.length - i - 1] = b;
+            });
+        });
+        player.current.tetromino.shape = result;
+        if(player.current.checkCollision(board)){
+            rotateRight();
+        } else {
+            player.current.drawOn(board);
+        }
+    }
+
 
     const updateBoard = (direction = DIRECTION.down) => {
         player.current.eraseFrom(board);
@@ -67,13 +98,11 @@ export const useBoard = () => {
         player.current.drawOn(board);
 
         if(isCollided && (direction === DIRECTION.down)){
-
             player.current = new ActiveTetro();
         }
-
         setBoard([...board]);
     }
 
-    return [updateBoard, board, moveLeft, moveRight, moveDown, rotate];
+    return [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft];
 }
 

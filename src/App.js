@@ -11,7 +11,7 @@ import { useBoard } from './hooks/useBoard';
 
 function App() {
   const [speed, setSpeed] = useState(1000);
-  const [updateBoard, board, moveLeft, moveRight, moveDown, rotate] = useBoard();
+  const [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft] = useBoard();
 
   const onTick = useCallback(() => {
     console.log('tic tic');
@@ -32,7 +32,7 @@ function App() {
         <button onClick={moveLeft}>LEFT</button>
         <button onClick={moveRight}>RIGHT</button>
         <button onClick={moveDown}>MOVE FASTER</button>
-        <button onClick={rotate}>ROTATE</button>
+        <button onClick={rotateLeft}>ROTATE</button>
         <span>time is {isRunning ? "curge" : "not curge"}</span>
       </RightPannel>
       
