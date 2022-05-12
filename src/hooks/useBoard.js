@@ -20,6 +20,7 @@ export const useBoard = () => {
         setBoard([...board]);
     }
 
+
     useEffect(() => { /*updateBoard();*/ }, [])  
     useEffect(() => {
         const listener = (event) => {
@@ -125,11 +126,10 @@ export const useBoard = () => {
             eraseLines(linesToErase, board);
             player.current = new ActiveTetro();
             player.current.drawOn(board);
-
         }
         setBoard([...board]);
     }
-
+    
     function eraseLines(linesToErase, board){
         for(let i = 0; i < linesToErase.length; i++){
             let lineIndex = linesToErase[i] - i;

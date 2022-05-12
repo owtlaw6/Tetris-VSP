@@ -1,11 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import Tetromino from './Tetromino';
+import { useCallback, useRef, useState } from "react";
+import { useGameTime } from './hooks/useGameTime' 
+import { RightPannel } from './RightPannel/RightPannel.js' 
+import { TileBoard } from './TileBoard/TileBoard.js' 
+import { getEmptyBoard } from './utils/utils';
+import { randomTetromino } from './tetrominos.js'
+import { useBoard } from './hooks/useBoard';
 
 function App() {
   const [speed, setSpeed] = useState(1000);
   const [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft, initializePlayer] = useBoard();
-
   const onTick = useCallback(() => {
     console.log('tic tic');
     updateBoard();
