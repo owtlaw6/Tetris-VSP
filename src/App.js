@@ -11,8 +11,7 @@ import { useBoard } from './hooks/useBoard';
 
 function App() {
   const [speed, setSpeed] = useState(1000);
-  const [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft] = useBoard();
-
+  const [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft, initializePlayer] = useBoard();
   const onTick = useCallback(() => {
     console.log('tic tic');
     updateBoard();
@@ -26,7 +25,7 @@ function App() {
         
       </TileBoard> 
       <RightPannel>
-      <button onClick={startTime} disabled={isRunning}>START</button>
+      <button onClick={() => {initializePlayer(); startTime()}} disabled={isRunning}>START</button>
         <button onClick={stopTime} disabled={!isRunning}>STOP</button>
         <button onClick={() => setSpeed((prev) => prev - 100)} /*disabled={!isRunning}*/>GO FASTER</button>
         <button onClick={moveLeft}>LEFT</button>
