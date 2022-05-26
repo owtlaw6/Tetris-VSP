@@ -47,6 +47,8 @@ export class ActiveTetro{
         return isCollided; 
     }
     drawOn(board){
-        this.forEachTile((row, column, color) => (board[row][column] = color));
+        if(!this.checkCollision(board)){
+            this.forEachTile((row, column, color) => (board[row][column] = color));
+        }
     }
 }
