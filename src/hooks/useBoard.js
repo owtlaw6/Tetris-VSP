@@ -6,6 +6,7 @@ import { DIRECTION, getEmptyBoard, getOppositeDirection } from '../utils/utils';
 
 export const useBoard = () => {
     const [board, setBoard] = useState(getEmptyBoard());
+    const [score, setScore] = useState(0);
     const player = useRef(new ActiveTetro());
     /*const isFirstRender = useRef(true);
     if(isFirstRender.current === true){
@@ -23,6 +24,7 @@ export const useBoard = () => {
             player.current.drawOn(freshBoard);
             setBoard([...freshBoard]);
             setGameOver(false);
+            setScore(0);
         }
     }
 
@@ -132,6 +134,7 @@ export const useBoard = () => {
                 }
                 if(isLineComplete){
                     linesToErase.push(i);
+                    setScore((prev) => prev + 1);
                 }
             }
             eraseLines(linesToErase, board);
@@ -143,7 +146,7 @@ export const useBoard = () => {
     
     function eraseLines(linesToErase, board){
         for(let i = 0; i < linesToErase.length; i++){
-            let lineIndex = linesToErase[i] - i;
+            let lineIndex = linesToErase[i];
             for(let m = lineIndex; m > 0; m--){
                 for(let n = 0; n < 12; n++){
                     board[m][n] = board[m - 1][n];
@@ -152,6 +155,6 @@ export const useBoard = () => {
         }
     } 
 
-    return [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft, initializePlayer, gameOver];
+    return [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft, initializePlayer, gameOver, score];
 }
 

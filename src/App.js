@@ -9,21 +9,27 @@ import { getEmptyBoard } from './utils/utils';
 import { randomTetromino } from './tetrominos.js'
 import { useBoard } from './hooks/useBoard';
 
+
 function App() {
   const [speed, setSpeed] = useState(1000);
-  const [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft, initializePlayer, gameOver] = useBoard();
+  const [updateBoard, board, moveLeft, moveRight, moveDown, rotateLeft, initializePlayer, gameOver, score] = useBoard();
   const onTick = useCallback(() => {
     console.log('tic tic');
     updateBoard();
-  }, [board]);
+  }, [gameOver]);
   
   const { isRunning, startTime, stopTime } = useGameTime({ onTick, speed });
 
   useEffect(() => {
     if(gameOver && isRunning){
       stopTime();
+      setSpeed(1000);
     }
   }, [gameOver])
+
+  useEffect(() => {
+    setSpeed((prev) => 0.9 * prev)
+  }, [score])
   
   return (
     <div className="container"> 
@@ -39,6 +45,7 @@ function App() {
         <button onClick={moveDown}>MOVE FASTER</button>
         <button onClick={rotateLeft}>ROTATE</button>
         <span>time is {isRunning ? "curge" : "not curge"}</span>
+        <span>Score: {score}</span>
       </RightPannel>
       
     </div>
